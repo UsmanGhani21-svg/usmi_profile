@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <nav>
+                <a href="index.html" class="logo">Usman Ghani</a>
+                <div class="nav-links">
+                    <a href="about.html">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="projects.html">Projects</a>
+                    <!-- <a href="#testimonials">Testimonials</a> -->
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+
+           
+    </header>
+    <section id="skills">
+        <h2>My Expertise</h2>
+        <div class="section-intro">
+            <p>With a strong foundation in both Python development and cybersecurity, I bring a unique perspective to
+                every project, ensuring that applications are not only functional but also secure by design.</p>
+        </div>
+
+        <div class="skills">
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3 class="skill-title">Python Development</h3>
+                <ul class="skill-list">
+                    <li>Django & Flask Frameworks</li>
+                    <li>API Development (REST & GraphQL)</li>
+                    <li>Data Analysis & Visualization</li>
+                    <li>Automation & Scripting</li>
+                    <li>Testing & CI/CD Integration</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🔐</div>
+                <h3 class="skill-title">Cybersecurity</h3>
+                <ul class="skill-list">
+                    <li>Penetration Testing</li>
+                    <li>Vulnerability Assessment</li>
+                    <li>Security Code Reviews</li>
+                    <li>Incident Response</li>
+                    <li>Security Architecture</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/UsmanGhani21-svg" class="social-icon" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+    
+                <a href="https://www.linkedin.com/in/usman-ghani-3528a832a" class="social-icon"><i
+                        class="fab fa-linkedin"></i></a>
+
+            </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" style="display:none; position:fixed; top:5%; left:5%; width:90%; height:90%; background:rgba(0,0,0,0.9); z-index:1000; border-radius:10px; overflow:hidden;">
+        <video id="videoPlayer" width="100%" height="100%" controls></video>
+        <button onclick="closeVideo()" style="position:absolute; top:10px; right:10px; background:red; color:white; padding:5px 10px; border:none; cursor:pointer;">Close</button>
+      </div>
+  
+      <script>
+        function openVideo(url) {
+          const player = document.getElementById('videoPlayer');
+          player.src = url;
+          document.getElementById('videoModal').style.display = 'block';
+        }
+        function closeVideo() {
+          const player = document.getElementById('videoPlayer');
+          player.pause();
+          player.src = '';
+          document.getElementById('videoModal').style.display = 'none';
+        }
+      </script>
+           
+</body>
+</html>

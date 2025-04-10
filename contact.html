@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <nav>
+                <a href="index.html" class="logo">Usman Ghani</a>
+                <div class="nav-links">
+                    <a href="about.html">About</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="projects.html">Projects</a>
+                    <!-- <a href="testimonials">Testimonials</a> -->
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+
+      
+    </header>
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="section-intro">
+            <p>Interested in working together? Have a question about my services or experience? Feel free to reach out.
+                I'm always open to discussing new projects, opportunities, and partnerships.</p>
+        </div>
+
+        <div class="contact">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <p>Email</p>
+                            <a href="mailto:usmanghani50985@gmail.com">📧</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <p>Phone</p>
+                            <a href="tel:+03127804928">📱</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <p>Location</p>
+                            <span>Bahawalpur</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-text">
+                            <p>Availability</p>
+                            <span>Monday-Friday, 9am-6pm PST</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+              
+                <form action="mailto:usmanghani50985@gmail.com">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/UsmanGhani21-svg" class="social-icon" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+    
+                <a href="https://www.linkedin.com/in/usman-ghani-3528a832a" class="social-icon"><i
+                        class="fab fa-linkedin"></i></a>
+
+            </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" style="display:none; position:fixed; top:5%; left:5%; width:90%; height:90%; background:rgba(0,0,0,0.9); z-index:1000; border-radius:10px; overflow:hidden;">
+        <video id="videoPlayer" width="100%" height="100%" controls></video>
+        <button onclick="closeVideo()" style="position:absolute; top:10px; right:10px; background:red; color:white; padding:5px 10px; border:none; cursor:pointer;">Close</button>
+      </div>
+  
+      <script>
+        function openVideo(url) {
+          const player = document.getElementById('videoPlayer');
+          player.src = url;
+          document.getElementById('videoModal').style.display = 'block';
+        }
+        function closeVideo() {
+          const player = document.getElementById('videoPlayer');
+          player.pause();
+          player.src = '';
+          document.getElementById('videoModal').style.display = 'none';
+        }
+      </script>
+</body>
+</html>
