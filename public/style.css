@@ -549,6 +549,26 @@ textarea {
 
 
 
+#form-feedback {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#form-feedback p {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-feedback p.success {
+    background-color: #28a745;
+    color: white;
+}
+
+#form-feedback p.error {
+    background-color: #dc3545;
+    color: white;
+}
 
 
 
