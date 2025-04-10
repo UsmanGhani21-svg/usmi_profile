@@ -90,6 +90,26 @@
           player.src = '';
           document.getElementById('videoModal').style.display = 'none';
         }
+        document.getElementById('contact-form').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(this);
+        const formObject = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formObject),
+            });
+
+            const result = await response.json();
+            alert(result.message || 'Form submitted successfully!');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('There was an issue sending your message.');
+        }
+    });
       </script>
       
 </body>

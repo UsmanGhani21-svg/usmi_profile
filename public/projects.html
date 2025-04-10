@@ -34,7 +34,7 @@
 
         <div class="projects">
             <div class="project-card">
-                <div class="project-image"> <img class="py_scanner" src="images/pyscanner.png" alt="error"></div>
+                <div class="project-image"> <img class="py_scanner" src="/images/pyscanner.png" alt="error"></div>
                 <div class="project-content">
                     <h3 class="project-title">SecurePy Framework</h3>
                     <div class="project-tags">
@@ -50,7 +50,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image"> <img class="school-img" src="images/scholl.png" alt="error"></div>
+                <div class="project-image"> <img class="school-img" src="/images/scholl.png" alt="error"></div>
                 <div class="project-content">
                     <h3 class="project-title">School Administrative Dashboard Dashboard</h3>
                     <div class="project-tags">
@@ -64,7 +64,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image"> <img class="vul-img" src="images/vulscanpro.png" alt="error"></div>
+                <div class="project-image"> <img class="vul-img" src="/images/vulscanpro.png" alt="error"></div>
                 <div class="project-content">
                     <h3 class="project-title">VulnScan Pro</h3>
                     <div class="project-tags">
@@ -78,7 +78,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image"> <img class="secure-api-image" src="images/secure-api.png" alt="error">  </div>
+                <div class="project-image"> <img class="secure-api-image" src="/images/secure-api.png" alt="error">  </div>
                 <div class="project-content">
                     <h3 class="project-title">SecureAPI Gateway</h3>
                     <div class="project-tags">
@@ -94,7 +94,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image"> <img class="bot" src="images/tele_bot.png" alt="error"></div>
+                <div class="project-image"> <img class="bot" src="/images/tele_bot.png" alt="error"></div>
                 <div class="project-content">
                     <h3 class="project-title">Ai Chat Bot </h3>
                     <div class="project-tags">
@@ -155,6 +155,26 @@
           player.src = '';
           document.getElementById('videoModal').style.display = 'none';
         }
+        document.getElementById('contact-form').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(this);
+        const formObject = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formObject),
+            });
+
+            const result = await response.json();
+            alert(result.message || 'Form submitted successfully!');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('There was an issue sending your message.');
+        }
+    });
       </script>
 </body>
 </html>
