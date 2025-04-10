@@ -1,1 +1,19 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variable files
 .env
+.env.local
+
+# Logs
+*.log
+
+# Next.js build output
+.next/
+
+# Vercel deployments (if using Vercel)
+vercel/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
