@@ -3,21 +3,23 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const querystring = require('querystring');
+require('dotenv').config(); // Load .env variables
 
 const server = http.createServer((req, res) => {
-    // Serve static files (HTML, CSS, JS)
     if (req.method === 'GET') {
         let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
-        if (filePath.endsWith('/')) filePath += 'index.html'; // Default to index.html for directories
-        
-        const extname = path.extname(filePath);
-        let contentType = 'text/html';
+        if (filePath.endsWith('/')) filePath += 'index.html';
 
-        if (extname === '.js') contentType = 'application/javascript';
-        if (extname === '.css') contentType = 'text/css';
-        if (extname === '.json') contentType = 'application/json';
-        if (extname === '.png') contentType = 'image/png';
-        if (extname === '.jpg') contentType = 'image/jpeg';
+        const extname = path.extname(filePath);
+        const mimeTypes = {
+            '.html': 'text/html',
+            '.js': 'application/javascript',
+            '.css': 'text/css',
+            '.json': 'application/json',
+            '.png': 'image/png',
+            '.jpg': 'image/jpeg',
+        };
+        const contentType = mimeTypes[extname] || 'application/octet-stream';
 
         fs.readFile(filePath, (err, content) => {
             if (err) {
@@ -30,31 +32,23 @@ const server = http.createServer((req, res) => {
         });
     }
 
-    // Handle form submission (POST request to /api/contact)
-    if (req.method === 'POST' && req.url === '/api/contact') {
+    else if (req.method === 'POST' && req.url === '/api/contact') {
         let body = '';
-
-        req.on('data', chunk => {
-            body += chunk;
-        });
-
+        req.on('data', chunk => { body += chunk; });
         req.on('end', () => {
-            const parsedData = querystring.parse(body); // Parse form data
-            
-            const { name, email, subject, message } = parsedData;
+            const { name, email, subject, message } = querystring.parse(body);
 
-            // Create a transporter object using your email service (Gmail in this case)
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: process.env.GMAIL_USER,  // Use environment variable
-                    pass: process.env.GMAIL_PASS,  // Use environment variable (app password)
+                    user: process.env.GMAIL_USER,
+                    pass: process.env.GMAIL_PASS,
                 },
             });
 
             const mailOptions = {
                 from: email,
-                to: 'your_email@example.com', // Replace with your email address
+                to: process.env.GMAIL_USER, // Send to your own Gmail
                 subject: subject,
                 text: `You have a new message from ${name} (${email})\n\n${message}`,
             };
@@ -71,7 +65,6 @@ const server = http.createServer((req, res) => {
         });
     }
 
-    // Handle any unsupported routes
     else {
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Route not found' }));
@@ -82,3 +75,4 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
